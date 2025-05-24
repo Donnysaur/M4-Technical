@@ -13,6 +13,7 @@ public:
         a = new T[n];
         top = -1;
     }
+
     void push(T element) {
         if (top == n - 1) {
             cout << "Stack is full\n";
@@ -23,13 +24,25 @@ public:
         }
     }
 
-
     T pop() {
-        //TODO
+        if (top == -1) {
+            cout << "Stack is empty\n";
+            return -1; // Assuming T is int or convertible from -1
+        } else {
+            return a[top--];
+        }
     }
 
     void display() {
-        //TODO
+        if (top == -1) {
+            cout << "Stack is empty\n";
+        } else {
+            cout << "Stack elements (top to bottom): ";
+            for (int i = top; i >= 0; --i) {
+                cout << a[i] << " ";
+            }
+            cout << endl;
+        }
     }
 
     void operations() {
@@ -64,6 +77,10 @@ public:
             }
             }
         }
+    }
+
+    ~Stack() {
+        delete[] a;
     }
 };
 
